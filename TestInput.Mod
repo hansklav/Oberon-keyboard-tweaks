@@ -48,7 +48,7 @@ MODULE TestInput; (* IN V5 *)  (* hk  20-10-2023 *)
 
 
   PROCEDURE ShowKey*;
-  (* This command waits for a key press and reports the keycode, ASCII-code and character (if visible) *)
+  (* Waits for a key press and reports the keycode, ASCII-code and character (if visible) *)
     VAR i, n: INTEGER; ch: CHAR;
   BEGIN
     Out.SetFont("Courier10.Fnt");
@@ -104,6 +104,7 @@ MODULE TestInput; (* IN V5 *)  (* hk  20-10-2023 *)
       END; Out.Ln
     END
   END KbdTab;
+
 
   PROCEDURE ShowMem*;  (* TestInput.ShowMem *)
   (* Explores how SYSTEM.ADR($ ..$) works *)
