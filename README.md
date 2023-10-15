@@ -88,7 +88,7 @@ My keyboard table looks like this (I also added the codes for one extra key of t
 
 ### Using the cursor control characters in other modules
 
-After changing the keyboard table, add the following line to the constant declaration of `Input.Mod` (using the ASCII codes that you chose for the arrow keys):
+After changing the keyboard table, add the following line to the constant declaration of `Input.Mod` (use the ASCII codes that you chose for the arrow keys):
 ```
 CONST
   (...)
