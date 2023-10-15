@@ -88,7 +88,7 @@ CONST
   left* = 02X;  right* = 06X;  up* = 10X;  down* = 0EX;        (* cursor control characters *)
 ```
 
-Then insert the following code fragment into procedure `Write` of `TextFrames.Mod` (again using your own chosen ASCII codes for the arrow keys and matching control characters): 
+Then insert the following code fragment (by Jörg Straube) into procedure `Write` of `TextFrames.Mod` (again using your own chosen ASCII codes for the arrow keys and matching control characters): 
 ```
     (...)
   ELSIF ch = 18X THEN (*ctrl-x,  cut*)
@@ -108,7 +108,7 @@ Then insert the following code fragment into procedure `Write` of `TextFrames.Mo
   ELSIF (20X <= ch) & (ch <= DEL) OR (ch = CR) OR (ch = TAB) THEN
     (...)
 ```
-While you are editing `TextFrames.Mod` you might as well make one further change to its procedure `Write`, to get the *delete* key (forward delete) working in Oberon System texts. For this you need not change anything in the Keyboard Table of `Input.Mod` because the delete key is already there (ASCII `7F` in locations F1 and 71). You only need to make the following changes to procedure `Write`, a few lines above the changes you made for the arrow keys (if you know a simpler code for this, please let me know):
+While you are editing `TextFrames.Mod` you might as well make one further change to its procedure `Write`, to get the *delete* key (forward delete) working in Oberon System texts. For this you need not change anything in the keyboard table of `Input.Mod` because the delete key is already there (ASCII `7F` in locations F1 and 71). You only need to make the following changes to procedure `Write`, a few lines above the changes you made for the arrow keys (if you know a simpler code for this, please let me know):
 ```
     (...)
 BEGIN (*F.hasCar*)
