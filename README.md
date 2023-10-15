@@ -12,7 +12,7 @@ The table of hexadecimal numbers in procedure Input.Init has 16 rows and 16 colu
 For example, on most keyboards the key for the small letter "a" (= 61X) has hexadecimal keyboard code 1C (1CH); you can find this character (61 hex) in row number 1 and column number C, so its index (location in the table) is 1C. 
 The key for capital letter "A" (= 41X) has keyboard code 9C, and you can find ASCII code 41 hex in row 9, in the same column C as 61 (= "a"), but eight rows below it.
 The escape key (ASCII 27 decimal = 1B hexadecimal) can be found twice: in row 7, column 6 and in row F, column 6; keyboard codes 76H and 0F6H are for esc and shift+esc respectively. [One might question the usefulness of the last item because not many people will use the combination of shift+esc if it serves the same purpose as esc alone. The same goes for two other double registrations of characters: 7F (delete, DEL) and 08 (backspace, BS)]. 
-
+```
        0  1  2  3  4  5  6  7   8  9  A  B  C  D  E  F
 
    0  00 00 00 00 00 1A 00 00  00 00 00 00 00 09 60 00
@@ -32,7 +32,7 @@ The escape key (ASCII 27 decimal = 1B hexadecimal) can be found twice: in row 7,
    D  00 00 22 00 7B 2B 00 00  00 00 0D 7D 00 7C 00 00
    E  00 00 00 00 00 00 08 00  00 00 00 00 00 00 00 00
    F  00 7F 00 00 00 00 1B 00  00 00 00 00 00 00 00 00$)
-
+```
 
 How to proceed to get the arrow keys (left, right, up and down) of your keyboad into the Keyboard Table?
 First find out which keyboard codes they produce.
@@ -54,7 +54,7 @@ I chose other ASCII codes that have better mnemonics for the control combination
 left: 2X (^B backward), right: 6X (^F forward), uP: 10X (^P), dowN: 0EX (^N)
 
 So my Keyboard Table looks like this (I also added the codes for one extra key of the Dutch MacBook keyboard: 60 and 7E, which is de key for ` and ~):
-
+```
     KTabAdr := SYSTEM.ADR($
       00 00 00 00 00 1A 00 00  00 00 00 00 00 09 60 00
       00 00 00 00 00 71 31 00  00 00 7A 73 61 77 32 00
@@ -73,17 +73,17 @@ So my Keyboard Table looks like this (I also added the codes for one extra key o
       00 00 22 00 7B 2B 00 00  00 00 0D 7D 00 7C 00 00
       00 7E 00 00 00 00 08 00  00 00 00 02 00 00 00 00
       00 7F 0E 00 06 10 1B 00  00 00 00 00 00 00 00 00$)
-
+```
 
 After changing the Keyboard Table, add the following line to the constant declaration of Input.Mod (using the ASCII codes that you chose for the arrow keys):
-
+```
 CONST
   (...)
   left* = 02X;  right* = 06X;  up* = 10X;  down* = 0EX;        (* cursor control characters *)
-
+```
 
 Then insert the following code fragment into procedure Write of TextFrames.Mod (again using your own chosen ASCII codes for the arrow keys and matching control characters): 
-
+```
     (...)
   ELSIF ch = 18X THEN (*ctrl-x,  cut*)
     IF F.hasSel THEN
@@ -101,9 +101,9 @@ Then insert the following code fragment into procedure Write of TextFrames.Mod (
 (* ---------- end   arrow keys fragment --------------------------------------------------- *)
   ELSIF (20X <= ch) & (ch <= DEL) OR (ch = CR) OR (ch = TAB) THEN
     (...)
-
+```
 While you are editing TextFrames.Mod you might as well make one further change to the procedure Write, to get the delete key (forward delete) working in Oberon System texts. For this you need not change anything in the Keyboard Table of Input.Mod because the delete key is already there (ASCII 7F in locations F1 and 71). You only need to make the following changes to procedure Write, a few lines above the changes you made for the arrow keys (if you know a simpler code for this, please let me know):
-
+```
     (...)
 BEGIN (*F.hasCar*)
   IF ch = BS THEN  (*backspace*)
@@ -119,11 +119,11 @@ BEGIN (*F.hasCar*)
 (* ---------- end DEL fragment -------------------------------------------------------------------------------------- *)
   ELSIF ch = 3X THEN (* ctrl-c  copy*)
       (...)
-
+```
 
 Finally recompile Input.Mod and TextFrames.Mod and all modules that are dependent on them. 
 At least recompile the following modules by middle-clicking on ORP.Compile in each line, in a strict downward order:
-
+```
 ORP.Compile Input.Mod/s  Display.Mod/s  Viewers.Mod/s ~
 ORP.Compile Fonts.Mod/s  Texts.Mod/s ~
 ORP.Compile Oberon.Mod/s ~
@@ -133,6 +133,6 @@ ORP.Compile System.Mod/s ~
 ORP.Compile Edit.Mod/s ~
 ORP.Compile ORS.Mod/s  ORB.Mod/s ~
 ORP.Compile ORG.Mod/s  ORP.Mod/s ~
-
+```
 Then restart the Oberon System.
 
