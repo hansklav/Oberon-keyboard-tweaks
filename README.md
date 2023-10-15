@@ -4,7 +4,12 @@
 
 My main motivation for this small programming project was to get the arrow keys (a.k.a. cursor control keys) working in [Project Oberon 2013](https://people.inf.ethz.ch/wirth/ProjectOberon/index.html), for editing text and for playing ObTris (Oberon Tetris ;-). The keyboard device driver code can be found in module `Input.Mod` in procedures `Peek`, `Available`, `Read` and `Init`. It was fun to figure out some intricacies of the *keyboard code translation table* `KTabAdr` used in procedure `Init`, which is not described in detail by Niklaus Wirth. 
 
-The only information Wirth gives (in his [book Project Oberon 2013](https://people.inf.ethz.ch/wirth/ProjectOberon/PO.System.pdf), Section 9.2) is that it is a translation table which does a conversion from *keyboard codes* to ASCII character values. You need not understand much about the function `SYSTEM.ADR()` that uses the table, other than that it loads a string of at most 256 bytes somewhere into core memory and returns its address; so the keyboard table (varyingly referred to as `KTab` or `kbdTab`) can be seen as an array of 256 bytes; the indices of this array (coordinates of the table) are the keyboard codes (a.k.a. *scan codes*), and the bytes within the array are the hexadecimal ASCII values of characters. If you're curious you can find the code for `SYSTEM.ADR` in `ORS.HexString`, `ORG.Adr` and `ORG.loadStringAdr`.
+The only information Wirth gives (in his [book Project Oberon 2013](https://people.inf.ethz.ch/wirth/ProjectOberon/PO.System.pdf), Section 9.2) is that it is a translation table which does a conversion from *keyboard codes* to ASCII character values. You need not understand much about the function `SYSTEM.ADR()` that uses the table, other than that it loads a string of at most 256 bytes somewhere into core memory and returns its address; so the keyboard table (varyingly referred to as `KTab` or `kbdTab`) can be seen as an array of 256 bytes; the indices of this array (coordinates of the table) are the keyboard codes (a.k.a. *scan codes*), and the bytes within the array are the hexadecimal ASCII values of characters. The following line in procedure `Input.Read` accesses the table and does the translation (mapping) of a keyboard code to an ASCII character:
+```
+SYSTEM.GET(KTabAdr + kbdCode, ch);
+```
+Its semantics is indicated by Wirth in the comment `(* ch := kbdTab[kbdCode]; *), which means "if you regard the table with address `KTabAdr` as an array `kbdTab` then each keyboard code `kbdCode` can be used as an index to find the matching ASCII character".
+If you're curious you can find the code for `SYSTEM.ADR` in `ORS.HexString`, `ORG.Adr` and `ORG.loadStringAdr`.
 
 ### Reading the keyboard table
 
