@@ -112,13 +112,14 @@ BEGIN (*F.hasCar*)
     IF F.carloc.pos > F.org THEN
       Texts.Delete(F.text, F.carloc.pos - 1, F.carloc.pos, DelBuf); SetCaret(F, F.carloc.pos - 1)
     END
-(* ---------- start DEL fragment ------------------------------------------------------------------------------------ *)
+(* ---------- start DEL fragment ------------------------------------------------------------- *)
   ELSIF ch = DEL THEN (* delete *)
-    IF F.carloc.pos > F.org THEN 
-      IF F.carloc.pos < F.text.len THEN RemoveCaret(F); SetCaret(F, F.carloc.pos + 1) END; (* move caret 1 char right *)
-      Texts.Delete(F.text, F.carloc.pos - 1, F.carloc.pos, DelBuf); SetCaret(F, F.carloc.pos - 1)        (* backspace *)
+    IF F.carloc.pos > F.org THEN
+      (* move caret 1 char right and then backspace *)
+      IF F.carloc.pos < F.text.len THEN RemoveCaret(F); SetCaret(F, F.carloc.pos + 1) END;
+      Texts.Delete(F.text, F.carloc.pos - 1, F.carloc.pos, DelBuf); SetCaret(F, F.carloc.pos - 1)
     END		
-(* ---------- end DEL fragment -------------------------------------------------------------------------------------- *)
+(* ---------- end DEL fragment --------------------------------------------------------------- *)
   ELSIF ch = 3X THEN (* ctrl-c  copy*)
       (...)
 ```
