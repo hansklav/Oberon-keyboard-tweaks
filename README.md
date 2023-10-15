@@ -8,7 +8,7 @@ The only information Wirth gives (in his [book Project Oberon 2013](https://peop
 ```
 SYSTEM.GET(KTabAdr + kbdCode, ch);
 ```
-Its semantics is indicated by Wirth in the comment `(* ch := kbdTab[kbdCode]; *), which means "if you regard the table with address `KTabAdr` as an array `kbdTab` then each keyboard code `kbdCode` can be used as an index to find the matching ASCII character".
+Its semantics is indicated by Wirth in the comment `(* ch := kbdTab[kbdCode]; *)`, which means "if you regard the table with address `KTabAdr` as an array `kbdTab` then each keyboard code `kbdCode` can be used as an index to find the matching ASCII character".
 If you're curious you can find the code for `SYSTEM.ADR` in `ORS.HexString`, `ORG.Adr` and `ORG.loadStringAdr`.
 
 ### Reading the keyboard table
