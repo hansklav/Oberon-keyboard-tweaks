@@ -39,7 +39,8 @@ The *escape key* (ASCII 27 decimal = `1B` hexadecimal) can be found twice: in ro
    E  00 00 00 00 00 00 08 00  00 00 00 00 00 00 00 00
    F  00 7F 00 00 00 00 1B 00  00 00 00 00 00 00 00 00$)
 ```
-<br>
+<\br>
+
 ### Changing the keyboard table
 
 How to proceed to get the arrow keys (*left*, *right*, *up* and *down*) of your keyboard into the Keyboard Table?
@@ -83,7 +84,8 @@ So my Keyboard Table looks like this (I also added the codes for one extra key o
       00 7E 00 00 00 00 08 00  00 00 00 02 00 00 00 00
       00 7F 0E 00 06 10 1B 00  00 00 00 00 00 00 00 00$)
 ```
-<br>
+<\br>
+
 ### Using the cursor control characters in other modules
 
 After changing the Keyboard Table, add the following line to the constant declaration of `Input.Mod` (using the ASCII codes that you chose for the arrow keys):
@@ -113,6 +115,8 @@ Then insert the following code fragment (by Jörg Straube) into procedure `Write
   ELSIF (20X <= ch) & (ch <= DEL) OR (ch = CR) OR (ch = TAB) THEN
     (...)
 ```
+<\br>
+
 ### Using the `DEL` key
 
 While you are editing `TextFrames.Mod` you might as well make one further change to its procedure `Write`, to get the *delete* key (forward delete) working in Oberon System texts. For this you need not change anything in the keyboard table of `Input.Mod` because the delete key is already there (ASCII `7F` in locations F1 and 71). You only need to make the following changes to procedure `Write`, a few lines above the changes you made for the arrow keys (if you know a simpler code for this, please let me know):
