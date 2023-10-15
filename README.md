@@ -45,8 +45,9 @@ left: 0EBH    right: 0F4H    up: 0F5H    down: 0F2H
 The keyboard codes you find for your own arrow keys indicate the location in the table where the ASCII codes for these keys should be placed. But what are their ASCII codes? Well, you are free to choose them yourself from the ASCII codes that Oberon does not use! You should choose four characters from the range 01X to 1FX (the ASCII control characters). The following control characters are in use by Oberon: (backspace, BS (8X), tabulator, TAB (9X), carriage return, CR (0DX), ctrl-C (3X, copy), ctrl-V (16X, paste), ctrl-X (18X, cut), (ctrl-Z (1AX, place the star marker), so don't use one of those. 
 
 Note that ctrl-key combinations are handled by procedure Input.Read (without using the Keyboard Table) in the line:
+```
     IF Ctrl THEN ch := CHR(ORD(ch) MOD 20H) END
-
+```
 ASCII codes that are often used for the arrow keys are:
 left: 11X (^Q),  right: 12X (^R),   up: 13X (^S),   down: 14X (^T)
 
