@@ -63,7 +63,7 @@ ASCII codes that are often used for the arrow keys are:
 I chose other ASCII codes that have better mnemonics for the control combinations (just for fun): 
 *left*: `2X` (`^B` backward), *right*: `6X` (`^F` forward), `uP`: `10X` (`^P`), *dowN*: `0EX` (`^N`)
 
-So my Keyboard Table looks like this (I also added the codes for one extra key of the Dutch MacBook keyboard: `60` and `7E`, which is de key for ` and ~):
+My keyboard table looks like this (I also added the codes for one extra key of the Dutch MacBook keyboard: `60` and `7E`, which is de key for ` and ~):
 ```
     KTabAdr := SYSTEM.ADR($
       00 00 00 00 00 1A 00 00  00 00 00 00 00 09 60 00
@@ -88,7 +88,7 @@ So my Keyboard Table looks like this (I also added the codes for one extra key o
 
 ### Using the cursor control characters in other modules
 
-After changing the Keyboard Table, add the following line to the constant declaration of `Input.Mod` (using the ASCII codes that you chose for the arrow keys):
+After changing the keyboard table, add the following line to the constant declaration of `Input.Mod` (using the ASCII codes that you chose for the arrow keys):
 ```
 CONST
   (...)
