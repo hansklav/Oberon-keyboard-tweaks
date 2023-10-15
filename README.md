@@ -40,7 +40,7 @@ The *escape key* (ASCII 27 decimal = `1B` hexadecimal) can be found twice: in ro
 How to proceed to get the arrow keys (*left*, *right*, *up* and *down*) of your keyboard into the Keyboard Table?
 First find out which keyboard codes they produce.
 
-To find out the keyboard code for a particular key of your keyboard you can use my procedure `ShowKey` in module `TestInput.Mod`. This procedure uses the preprocessing that is provided by procedures `Peek` and `Read` of module `Input.Mod`.
+To find out the keyboard code for a particular key of your keyboard you can use the procedure `ShowKey` in my module `TestInput.Mod`. This procedure uses the preprocessing that is provided by procedures `Peek` and `Read` of module `Input.Mod`.
 
 In my case (using a MacBook) the keyboard codes are as follows:
 *left*: `0EBH`    *right*: `0F4H`    *up*: `0F5H`    *down*: `0F2H`
@@ -79,14 +79,16 @@ So my Keyboard Table looks like this (I also added the codes for one extra key o
       00 7F 0E 00 06 10 1B 00  00 00 00 00 00 00 00 00$)
 ```
 
-After changing the Keyboard Table, add the following line to the constant declaration of Input.Mod (using the ASCII codes that you chose for the arrow keys):
+### Using the cursor control characters in other modules
+
+After changing the Keyboard Table, add the following line to the constant declaration of `Input.Mod` (using the ASCII codes that you chose for the arrow keys):
 ```
 CONST
   (...)
   left* = 02X;  right* = 06X;  up* = 10X;  down* = 0EX;        (* cursor control characters *)
 ```
 
-Then insert the following code fragment into procedure Write of TextFrames.Mod (again using your own chosen ASCII codes for the arrow keys and matching control characters): 
+Then insert the following code fragment into procedure `Write` of `TextFrames.Mod` (again using your own chosen ASCII codes for the arrow keys and matching control characters): 
 ```
     (...)
   ELSIF ch = 18X THEN (*ctrl-x,  cut*)
@@ -106,7 +108,7 @@ Then insert the following code fragment into procedure Write of TextFrames.Mod (
   ELSIF (20X <= ch) & (ch <= DEL) OR (ch = CR) OR (ch = TAB) THEN
     (...)
 ```
-While you are editing TextFrames.Mod you might as well make one further change to the procedure Write, to get the delete key (forward delete) working in Oberon System texts. For this you need not change anything in the Keyboard Table of `Input.Mod` because the delete key is already there (ASCII `7F` in locations F1 and 71). You only need to make the following changes to procedure Write, a few lines above the changes you made for the arrow keys (if you know a simpler code for this, please let me know):
+While you are editing `TextFrames.Mod` you might as well make one further change to its procedure `Write`, to get the *delete* key (forward delete) working in Oberon System texts. For this you need not change anything in the Keyboard Table of `Input.Mod` because the delete key is already there (ASCII `7F` in locations F1 and 71). You only need to make the following changes to procedure `Write`, a few lines above the changes you made for the arrow keys (if you know a simpler code for this, please let me know):
 ```
     (...)
 BEGIN (*F.hasCar*)
