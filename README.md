@@ -1,6 +1,6 @@
 # Oberon-keyboard-tweaks
 
-## Tutorial: configuring the Project Oberon 2013 keyboard device driver
+## Configuring the Project Oberon 2013 keyboard device driver
 
 My main motivation for this small programming project was to get the arrow keys (a.k.a. keyboard control keys) working in [Project Oberon 2013](https://people.inf.ethz.ch/wirth/ProjectOberon/index.html), a.k.a. Oberon System V5, for editing text and for playing ObTris (Oberon Tetris). It was fun to figure out some intricacies of the Keyboard Table `KTabAdr` in procedure `Init` of module `Input.Mod`, which is not described in detail by Niklaus Wirth. 
 
@@ -34,6 +34,8 @@ The *escape key* (ASCII 27 decimal = `1B` hexadecimal) can be found twice: in ro
    E  00 00 00 00 00 00 08 00  00 00 00 00 00 00 00 00
    F  00 7F 00 00 00 00 1B 00  00 00 00 00 00 00 00 00$)
 ```
+
+### Changing the keyboard table
 
 How to proceed to get the arrow keys (*left*, *right*, *up* and *down*) of your keyboad into the Keyboard Table?
 First find out which keyboard codes they produce.
