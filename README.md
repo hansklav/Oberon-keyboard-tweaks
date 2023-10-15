@@ -61,7 +61,7 @@ ASCII codes that are often used for the arrow keys are:
 *left*: `11X` (`^Q`),  *right*: `12X` (`^R`),   *up*: `13X` (`^S`),   *down*: `14X` (`^T`)
 
 I chose other ASCII codes that have better mnemonics for the control combinations (just for fun): 
-*left*: `2X` (`^B` backward), *right*: `6X` (`^F` forward), `uP`: `10X` (`^P`), *dowN*: `0EX` (`^N`)
+*left*: `2X` (`^B` backward), *right*: `6X` (`^F` forward), *uP*: `10X` (`^P`), *dowN*: `0EX` (`^N`)
 
 My keyboard table looks like this (I also added the codes for one extra key of the Dutch MacBook keyboard: `60` and `7E`, which is de key for ` and ~):
 ```
