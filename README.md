@@ -39,7 +39,7 @@ The *escape key* (ASCII 27 decimal = `1B` hexadecimal) can be found twice: in ro
    E  00 00 00 00 00 00 08 00  00 00 00 00 00 00 00 00
    F  00 7F 00 00 00 00 1B 00  00 00 00 00 00 00 00 00$)
 ```
-
+<br>
 ### Changing the keyboard table
 
 How to proceed to get the arrow keys (*left*, *right*, *up* and *down*) of your keyboard into the Keyboard Table?
@@ -83,7 +83,7 @@ So my Keyboard Table looks like this (I also added the codes for one extra key o
       00 7E 00 00 00 00 08 00  00 00 00 02 00 00 00 00
       00 7F 0E 00 06 10 1B 00  00 00 00 00 00 00 00 00$)
 ```
-
+<br>
 ### Using the cursor control characters in other modules
 
 After changing the Keyboard Table, add the following line to the constant declaration of `Input.Mod` (using the ASCII codes that you chose for the arrow keys):
