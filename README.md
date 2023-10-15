@@ -37,7 +37,7 @@ The *escape key* (ASCII 27 decimal = `1B` hexadecimal) can be found twice: in ro
 
 ### Changing the keyboard table
 
-How to proceed to get the arrow keys (*left*, *right*, *up* and *down*) of your keyboad into the Keyboard Table?
+How to proceed to get the arrow keys (*left*, *right*, *up* and *down*) of your keyboard into the Keyboard Table?
 First find out which keyboard codes they produce.
 
 To find out the keyboard code for a particular key of your keyboard you can use my procedure `ShowKey` in module `TestInput.Mod`. This procedure uses the preprocessing that is provided by procedures `Peek` and `Read` of module `Input.Mod`.
