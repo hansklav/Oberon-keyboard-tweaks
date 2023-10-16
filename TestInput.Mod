@@ -51,7 +51,7 @@ MODULE TestInput; (* IN V5 *)  (* hk  20-10-2023 *)
   (* Waits for a key press and reports the keycode, ASCII-code and character (if visible) *)
     VAR i, n: INTEGER; ch: CHAR;
   BEGIN
-    Out.SetFont("Courier10.Fnt");
+ (* Out.SetFont("Courier10.Fnt"); *)
     Out.String("Press any key ... (Q or q exits)");  Out.Ln; 
     REPEAT
       REPEAT n := Available( ) UNTIL n > 0;
@@ -73,7 +73,8 @@ MODULE TestInput; (* IN V5 *)  (* hk  20-10-2023 *)
   PROCEDURE KbdTab*;  (* TestInput.KbdTab *)
   (* Prints the contents of the Keyboard Table in readable format *)
     VAR adr, line, i, v: INTEGER;  ch: CHAR;
-  BEGIN Out.SetFont("Courier10.Fnt");
+  BEGIN 
+ (* Out.SetFont("Courier10.Fnt"); *)
     Out.String("Keyboard Code Table"); Out.Ln;
     Out.String("Line KbCode ASCII Char"); Out.Ln;
     line := 0; 
