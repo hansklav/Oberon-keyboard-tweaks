@@ -43,8 +43,8 @@ The *escape key* (ASCII 27 decimal = `1B` hexadecimal) can be found twice: in ro
 
 ### Changing the keyboard table
 
-How to proceed to get the arrow keys (*left*, *right*, *up* and *down*) of your keyboard into the Keyboard Table?
-**Warning**: make a backup of your Oberon System disk image before making changes to Input.Mod, just in case (copy the file and give the copy a meaningful name).
+How to proceed to get the arrow keys (*left*, *right*, *up* and *down*) of your keyboard into the Keyboard Table? <br>
+**Warning**: make a backup of your Oberon System disk image before making changes to `Input.Mod`, just in case (copy the file and give the copy a meaningful name).
 
 To find out the keyboard code for a particular key of your keyboard you can use the procedure `ShowKey` in my module `TestInput.Mod`. This procedure shows the keyboard code and the corresponding character (if visible) for each key pressed. It uses the preprocessing that is provided by procedures `Peek` and `Read` of module `Input.Mod`. You will also need my module `Out.Mod`, which is imported by `TestInput.Mod`.
 
