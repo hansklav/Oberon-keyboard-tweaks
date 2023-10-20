@@ -96,6 +96,7 @@ CONST
   left* = 02X;  right* = 06X;  up* = 10X;  down* = 0EX;        (* cursor control characters *)
 ```
 Also add an export mark after this variable declaration: `Ctrl*` so that other modules can read the status of the control key.
+
 Then insert the following code fragment (by Jörg Straube) into procedure `Write` of `TextFrames.Mod` (again using your own chosen ASCII codes for the arrow keys and matching control characters): 
 ```
     (...)
