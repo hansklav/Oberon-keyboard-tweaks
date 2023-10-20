@@ -17,7 +17,7 @@ MODULE TestInput; (* IN V5 *)  (* hk  20-10-2023 *)
 
   PROCEDURE Peek;
   BEGIN
-    IF SYSTEM.BIT(msAdr, 28) THEN  (* this flag signals that a keyboard code was received in the buffer *)
+    IF SYSTEM.BIT(msAdr, 28) THEN  (* this single-bit flag signals that a keyboard code was received *)
       SYSTEM.GET(kbdAdr, kbdCode);           (* get the most recent keyboard code *)
       IF kbdCode = 0F0H THEN Up := TRUE      (* keyboard code 0F0H signals key up *)
       ELSIF kbdCode = 0E0H THEN Ext := TRUE  (* keyboard code 0E0H signals extended code *)
@@ -42,7 +42,7 @@ MODULE TestInput; (* IN V5 *)  (* hk  20-10-2023 *)
     WHILE ~Recd DO Peek() END ;
     IF Shift OR Ctrl THEN INC(kbdCode, 80H) END;  (*ctrl implies shift*)
     SYSTEM.GET(kbdTabAdr + kbdCode, ch);          (* ch := kbdTab[kbdCode]; *)
-    IF Ctrl THEN ch := CHR(ORD(ch) MOD 20H) END;  (* Ctrl characters overrule characters from the table *)
+    IF Ctrl THEN ch := CHR(ORD(ch) MOD 20H) END;  (* control characters overrule characters from the table *)
     Recd := FALSE
   END Read;
 
