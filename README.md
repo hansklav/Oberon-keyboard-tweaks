@@ -47,7 +47,7 @@ How to proceed to get the arrow keys (*left*, *right*, *up* and *down*) of your 
 
 **Warning**: make a backup of your Oberon System disk image before making changes to `Input.Mod`, just in case (copy the file and give the copy a meaningful name).
 
-To find out the keyboard code for a particular key of your keyboard you can use the procedure `ShowKey` in my module `TestInput.Mod`. This procedure shows the keyboard code and the corresponding character (if visible) for each key pressed. It uses the same preprocessing that is provided by procedures `Peek` and `Read` of module `Input.Mod`. You will also need my module `Out.Mod`, which is imported by `TestInput.Mod`.
+To find out the keyboard code for a particular key of your keyboard you can use the procedure `ShowKey` in my module `TestInput.Mod`. This procedure shows the keyboard code and the corresponding character (if visible) for each key pressed. It uses the same preprocessing that is provided by procedures `Peek` and `Read` of module `Input.Mod`. You will also need my module `Out.Mod` from repository Oberon-07, which is imported by `TestInput.Mod`.
 
 In my case (using a MacBook) the keyboard codes are as follows:
 *left*: `0EBH`    *right*: `0F4H`    *up*: `0F5H`    *down*: `0F2H`
