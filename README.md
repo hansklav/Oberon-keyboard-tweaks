@@ -164,4 +164,5 @@ You might also need Random.Mod and Strings.Mod in my repository Oberon-07.
 If you already have and ObTris.Mod functioning and would like to use the arrow keys while playing Tetris then you probably have to make changes to the following parts of your ObTris.Mod file:
 - global CONST declaration part
 - procedures PrintKeys, ClearHi and SetKeys
+
 After compilation use the command SetKeys in ObTris.Tool to choose another set of game control keys.
