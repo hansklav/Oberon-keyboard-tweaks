@@ -52,7 +52,7 @@ To find out the keyboard code for a particular key of your keyboard you can use 
 In my case (using a MacBook) the keyboard codes are as follows:
 *left*: `0EBH`    *right*: `0F4H`    *up*: `0F5H`    *down*: `0F2H`
 
-The keyboard codes you find for your own arrow keys indicate the location in the table where the ASCII codes for these keys should be placed. But what are their ASCII codes? Well, you are free to choose them yourself from the ASCII codes that Oberon does not use! You should choose four characters from the range `01X` to `1FX` (the *ASCII control characters*). The following control characters are in use by Oberon: (*backspace*, `BS` (`8X`), *tabulator*, `TAB` (`9X`), *carriage return*, `CR` (`0DX`), *ctrl-C* or `^C` (`3X`, copy), *ctrl-V* or `^V` (`16X`, paste), *ctrl-X* or `^X` (18X, cut), *ctrl-Z* or `^Z` (`1AX`, place the star marker), so don't use one of those. 
+The keyboard codes you find for your own arrow keys indicate the location in the table where the ASCII codes for these keys should be placed. But what are their ASCII codes? Well, you are free to choose them yourself from the ASCII codes that Oberon does not use! You might choose four characters from the range `01X` to `1FX` (the *ASCII control characters*). The following control characters are in use by Oberon: (*backspace*, `BS` (`8X`), *tabulator*, `TAB` (`9X`), *carriage return*, `CR` (`0DX`), *ctrl-C* or `^C` (`3X`, copy), *ctrl-V* or `^V` (`16X`, paste), *ctrl-X* or `^X` (18X, cut), *ctrl-Z* or `^Z` (`1AX`, place the star marker), so don't use one of those. 
 
 Note that ctrl-key combinations are handled by procedure `Input.Read` (without using the keyboard kable) in the line:
 ```
@@ -95,9 +95,9 @@ CONST
   (...)
   left* = 02X;  right* = 06X;  up* = 10X;  down* = 0EX;        (* cursor control characters *)
 ```
-Also add an export mark after this variable declaration: `Ctrl*`, for other modules to read the status of the control key. 
+Also add an export mark after the following variable declaration of Input.Mod: `Ctrl*`, for other modules to read the status of the control key. 
 
-Then insert the following code fragment (by Jörg Straube) into procedure `Write` of `TextFrames.Mod` (again using your own chosen ASCII codes for the arrow keys and matching control characters): 
+Then insert the code fragment below (by Jörg Straube) into procedure `Write` of `TextFrames.Mod` (again using your own chosen ASCII codes for the arrow keys and matching control characters): 
 ```
     (...)
   ELSIF ch = 18X THEN (*ctrl-x,  cut*)
