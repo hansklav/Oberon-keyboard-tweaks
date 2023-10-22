@@ -164,6 +164,8 @@ ORP.Compile ORG.Mod/s  ORP.Mod/s ~
 ```
 Then restart the Oberon System.
 
+<br>
+
 ### Using the arrow keys in ObTris (Oberon Tetris)
 
 If you made the above changes to Input.Mod then you can use ObTris.Mod and ObTris.Tool in this repository. 
