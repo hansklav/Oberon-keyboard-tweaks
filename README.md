@@ -146,7 +146,9 @@ BEGIN (*F.hasCar*)
   ELSIF ch = 3X THEN (* ctrl-c  copy*)
       (...)
 ```
+
 <br>
+
 Finally recompile `Input.Mod` and `TextFrames.Mod` and all modules that are dependent on them. 
 At least recompile the following modules by middle-clicking on `ORP.Compile` in each line, in a strict downward order:
 ```
