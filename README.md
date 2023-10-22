@@ -168,11 +168,11 @@ Then restart the Oberon System.
 
 ## Using the arrow keys in ObTris (Oberon Tetris)
 
-If you made the above changes to Input.Mod then you can use ObTris.Mod and ObTris.Tool in this repository without changes. 
-You might also need Random.Mod, Out.Mod and Strings.Mod in my repository Oberon-07.
+If you made the above changes to `Input.Mod` then you can use `ObTris.Mod` and `ObTris.Tool` in this repository without changes. 
+You might also need `Random.Mod`, `Out.Mod` and `Strings.Mod` in my repository Oberon-07.
 
-If you already have an ObTris.Mod functioning and would like to use the arrow keys while playing Tetris then you probably have to make changes to the following parts of your ObTris.Mod file:
-- global CONST declaration part
-- procedures PrintKeys, ClearHi and SetKeys
+If you already have an `ObTris.Mod` functioning and would like to use the arrow keys while playing Tetris then you probably have to make changes to the following parts of your ObTris.Mod file:
+- global `CONST` declaration part
+- procedures `PrintKeys`, `ClearHi` and `SetKeys`
 
-After compilation use the command SetKeys in ObTris.Tool to choose another set of game control keys.
+After compilation use the command `SetKeys` in `ObTris.Tool` to choose another set of game control keys.
