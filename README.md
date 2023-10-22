@@ -91,6 +91,8 @@ My keyboard table looks like this (I also added the codes for one extra key of t
 
 After changing the keyboard table, add the following line to the constant declaration of `Input.Mod` (use the ASCII codes that you chose for the arrow keys):
 ```
+[ Input.Mod ]
+
 CONST
   (...)
   left* = 02X;  right* = 06X;  up* = 10X;  down* = 0EX;        (* cursor control characters *)
@@ -99,7 +101,8 @@ Also add an export mark after the following variable declaration of Input.Mod: `
 
 Then insert the code fragment below (thanks to Jörg Straube) into procedure `Write` of `TextFrames.Mod` (again using your own chosen ASCII codes for the arrow keys and matching control characters): 
 ```
-[TextFrames.Write]
+[ TextFrames.Write ]
+
     (...)
   ELSIF ch = 18X THEN (*ctrl-x,  cut*)
     IF F.hasSel THEN
@@ -124,7 +127,8 @@ Then insert the code fragment below (thanks to Jörg Straube) into procedure `Wr
 
 While you are editing `TextFrames.Mod` you might as well make one further change to its procedure `Write`, to get the *delete* key (forward delete) working in Oberon System texts. For this you need not change anything in the keyboard table of `Input.Mod` because the delete key is already there (ASCII `7F` in locations F1 and 71). You only need to make the following changes to procedure `Write`, a few lines above the changes you made for the arrow keys (if you know a simpler code for this, please let me know):
 ```
-[TextFrames.Write]
+[ TextFrames.Write ]
+
     (...)
 BEGIN (*F.hasCar*)
   IF ch = BS THEN  (*backspace*)
