@@ -87,7 +87,7 @@ My keyboard table looks like this (I also added the codes for one extra key of t
 ```
 <br>
 
-### Using the cursor control characters in other modules
+## Using the cursor control characters in text viewers
 
 After changing the keyboard table, add the following line to the constant declaration of `Input.Mod` (use the ASCII codes that you chose for the arrow keys):
 ```
@@ -166,9 +166,9 @@ Then restart the Oberon System.
 
 <br>
 
-### Using the arrow keys in ObTris (Oberon Tetris)
+## Using the arrow keys in ObTris (Oberon Tetris)
 
-If you made the above changes to Input.Mod then you can use ObTris.Mod and ObTris.Tool in this repository. 
+If you made the above changes to Input.Mod then you can use ObTris.Mod and ObTris.Tool in this repository without changes. 
 You might also need Random.Mod, Out.Mod and Strings.Mod in my repository Oberon-07.
 
 If you already have an ObTris.Mod functioning and would like to use the arrow keys while playing Tetris then you probably have to make changes to the following parts of your ObTris.Mod file:
