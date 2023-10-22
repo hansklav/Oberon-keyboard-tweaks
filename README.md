@@ -47,14 +47,14 @@ How to proceed to get the arrow keys (*left*, *right*, *up* and *down*) of your 
 
 **Warning**: make a backup of your Oberon System disk image before making changes to `Input.Mod`, just in case (copy the file and give the copy a meaningful name).
 
-To find out the keyboard code for a particular key of your keyboard you can use the procedure `ShowKey` in my module `TestInput.Mod`. This procedure shows the keyboard code and the corresponding character (if visible) for each key pressed. It uses the same preprocessing that is provided by procedures `Peek` and `Read` of module `Input.Mod`. You will also need my module `Out.Mod` from repository Oberon-07, which is imported by `TestInput.Mod`.
+First find out the keyboard codes for the arrow keys of your keyboard using the procedure `ShowKey` in my module `TestInput.Mod`. This procedure shows the keyboard code and the corresponding character (if visible) for each key pressed. It uses the same preprocessing that is provided by procedures `Peek` and `Read` of module `Input.Mod`. You will also need my module `Out.Mod` from repository Oberon-07, which is imported by `TestInput.Mod`.
 
 In my case (using a MacBook) the keyboard codes are as follows:
 *left*: `0EBH`    *right*: `0F4H`    *up*: `0F5H`    *down*: `0F2H`
 
-The keyboard codes you find for your own arrow keys indicate the location in the table where the ASCII codes for these keys should be placed. But what are their ASCII codes? Well, you are free to choose them yourself from the ASCII codes that Oberon does not use! You might choose four characters from the range `01X` to `1FX` (the *ASCII control characters*). The following control characters are in use by Oberon: (*backspace*, `BS` (`8X`), *tabulator*, `TAB` (`9X`), *carriage return*, `CR` (`0DX`), *ctrl-C* or `^C` (`3X`, copy), *ctrl-V* or `^V` (`16X`, paste), *ctrl-X* or `^X` (18X, cut), *ctrl-Z* or `^Z` (`1AX`, place the star marker), so don't use one of those. 
+The keyboard codes you find for your own arrow keys indicate the location in the table where the ASCII codes for these keys should be placed, as explained above. But what are their ASCII codes? Well, you are free to choose them yourself from the ASCII codes that Oberon does not use! You might choose four characters from the range `01X` to `1FX` (the *ASCII control characters*). The following control characters are in use by Oberon: (*backspace*, `BS` (`8X`), *tabulator*, `TAB` (`9X`), *carriage return*, `CR` (`0DX`), *ctrl-C* or `^C` (`3X`, copy), *ctrl-V* or `^V` (`16X`, paste), *ctrl-X* or `^X` (18X, cut), *ctrl-Z* or `^Z` (`1AX`, place the star marker), so don't use one of those. 
 
-Note that ctrl-key combinations are handled by procedure `Input.Read` (without using the keyboard kable) in the line:
+Note that ctrl-key combinations are handled by procedure `Input.Read` (without using the keyboard table) in the line:
 ```
     IF Ctrl THEN ch := CHR(ORD(ch) MOD 20H) END
 ```
@@ -97,8 +97,9 @@ CONST
 ```
 Also add an export mark after the following variable declaration of Input.Mod: `Ctrl*`, for other modules to read the status of the control key. 
 
-Then insert the code fragment below (by Jörg Straube) into procedure `Write` of `TextFrames.Mod` (again using your own chosen ASCII codes for the arrow keys and matching control characters): 
+Then insert the code fragment below (thanks to Jörg Straube) into procedure `Write` of `TextFrames.Mod` (again using your own chosen ASCII codes for the arrow keys and matching control characters): 
 ```
+[TextFrames.Write]
     (...)
   ELSIF ch = 18X THEN (*ctrl-x,  cut*)
     IF F.hasSel THEN
@@ -123,6 +124,7 @@ Then insert the code fragment below (by Jörg Straube) into procedure `Write` of
 
 While you are editing `TextFrames.Mod` you might as well make one further change to its procedure `Write`, to get the *delete* key (forward delete) working in Oberon System texts. For this you need not change anything in the keyboard table of `Input.Mod` because the delete key is already there (ASCII `7F` in locations F1 and 71). You only need to make the following changes to procedure `Write`, a few lines above the changes you made for the arrow keys (if you know a simpler code for this, please let me know):
 ```
+[TextFrames.Write]
     (...)
 BEGIN (*F.hasCar*)
   IF ch = BS THEN  (*backspace*)
