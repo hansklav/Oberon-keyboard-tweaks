@@ -54,11 +54,11 @@ In my case (using a MacBook) the keyboard codes are as follows:
 
 The keyboard codes you find for your own arrow keys indicate the location in the table where the ASCII codes for these keys should be placed, as explained above. But what are their ASCII codes? Well, you are free to choose them yourself from the ASCII codes that Oberon does not use! You might choose four characters from the range `01X` to `1FX` (the *ASCII control characters*). The following control characters are in use by Oberon: (*backspace*, `BS` (`8X`), *tabulator*, `TAB` (`9X`), *carriage return*, `CR` (`0DX`), *ctrl-C* or `^C` (`3X`, copy), *ctrl-V* or `^V` (`16X`, paste), *ctrl-X* or `^X` (18X, cut), *ctrl-Z* or `^Z` (`1AX`, place the star marker), so don't use one of those. 
 
-Note that ctrl-key combinations are mapped to the first 32 (=20H) ASCII codes (without using the keyboard table, and without need to export the Boolean variable Ctrl) by the following line in procedure `Input.Read`:
+Note that ctrl-key combinations are mapped to the first 32 (=`20H`) ASCII codes (without using the keyboard table, and without need to export the Boolean variable `Ctrl`) by the following line in procedure `Input.Read`:
 ```
     IF Ctrl THEN ch := CHR(ORD(ch) MOD 20H) END
 ```
-In this way ctrl-key coombinations run from ^@ (0X), ^A (1X) .. ^Z (1AX), ^[ (1BX), ^\ (1CX), ^] (1DX), ^^ (1EX) up to ^_ (1FX); the next character is Space (20X).
+In this way ctrl-key coombinations run from ^@ (`0X`), ^A (`1X`) .. ^Z (`1AX`), ^[ (`1BX`), ^\ (`1CX`), ^] (`1DX`), ^^ (`1EX`) up to ^_ (`1FX`); the next character is Space (20X).
 
 ASCII codes that are sometimes used for the arrow keys are:
 *left*: `11X` (`^Q`),  *right*: `12X` (`^R`),   *up*: `13X` (`^S`),   *down*: `14X` (`^T`)
