@@ -61,7 +61,7 @@ Note that ctrl-key combinations are handled by procedure `Input.Read` (without u
 ASCII codes that are often used for the arrow keys are:
 *left*: `11X` (`^Q`),  *right*: `12X` (`^R`),   *up*: `13X` (`^S`),   *down*: `14X` (`^T`)
 
-I chose other ASCII codes that have better mnemonics for the control combinations (just for fun): 
+I chose other ASCII codes that have better mnemonics for the control combinations (just for fun: by chosing these ASCII codes you let the control keys behave the same as the arrow keys): 
 *left*: `2X` (`^B` backward), *right*: `6X` (`^F` forward), *uP*: `10X` (`^P`), *dowN*: `0EX` (`^N`)
 
 My keyboard table looks like this (I also added the codes for one extra key of the Dutch MacBook keyboard: `60` and `7E`, which is de key for ` and ~):
@@ -109,13 +109,13 @@ Then insert the code fragment below (thanks to Jörg Straube) into procedure `Wr
       NEW(TBuf); Texts.OpenBuf(TBuf); Texts.Delete(F.text, F.selbeg.pos, F.selend.pos, TBuf)
     END
 (* ---------- start arrow keys fragment --------------------------------------------------- *)
-  ELSIF (ch = Input.left) OR Input.Ctrl & (ch = 2X) (*Ctrl+B*) THEN       (* left, Backward *)
+  ELSIF ch = Input.left THEN 
     IF F.carloc.pos > 0 THEN RemoveCaret(F); SetCaret(F, F.carloc.pos - 1) END
-  ELSIF (ch = Input.right) OR Input.Ctrl & (ch = 6X) (*Ctrl+F*) THEN      (* right, Forward *)
+  ELSIF ch = Input.right THEN
     IF F.carloc.pos < F.text.len THEN RemoveCaret(F); SetCaret(F, F.carloc.pos + 1) END
-  ELSIF (ch = Input.up) OR Input.Ctrl & (ch = 10X) (*Ctrl+P*) THEN                    (* uP *)
+  ELSIF ch = Input.up THEN                
     RemoveCaret(F); SetCaret(F, Pos(F, F.X + F.carloc.x, F.Y + F.carloc.y + F.lsp))
-  ELSIF (ch = Input.down) OR Input.Ctrl & (ch = 0EX) (*Ctrl+N*) THEN                (* dowN *)
+  ELSIF ch = Input.down THEN 
     RemoveCaret(F); SetCaret(F, Pos(F, F.X + F.carloc.x, F.Y + F.carloc.y - F.lsp))		
 (* ---------- end   arrow keys fragment --------------------------------------------------- *)
   ELSIF (20X <= ch) & (ch <= DEL) OR (ch = CR) OR (ch = TAB) THEN
