@@ -63,7 +63,7 @@ In this way ctrl-key combinations run from `^@` (`0X`), `^A` (`1X`) .. `^Z` (`1A
 ASCII codes that are sometimes used for the arrow keys are:
 *left*: `11X` (`^Q`),  *right*: `12X` (`^R`),   *up*: `13X` (`^S`),   *down*: `14X` (`^T`)
 
-I chose other ASCII codes that have better mnemonics for the control combinations (just for fun: by chosing these ASCII codes you let the control keys behave the same as the arrow keys): 
+I chose other ASCII codes that have better mnemonics for the control combinations (just for fun: by chosing these ASCII codes you let these control keys behave the same as the arrow keys): 
 *left*: `2X` (`^B` backward), *right*: `6X` (`^F` forward), *uP*: `10X` (`^P`), *dowN*: `0EX` (`^N`)
 
 My keyboard table looks like this (I also added the codes for one extra key of the Dutch MacBook keyboard: `60` and `7E`, which is de key for ` and ~):
