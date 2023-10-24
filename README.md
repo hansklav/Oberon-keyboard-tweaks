@@ -58,7 +58,7 @@ Note that ctrl-key combinations are mapped to the first 32 (=`20H`) ASCII codes 
 ```
     IF Ctrl THEN ch := CHR(ORD(ch) MOD 20H) END
 ```
-In this way ctrl-key combinations run from `^@` (`0X`), `^A` (`1X`) .. `^Z` (`1AX`), `^[` (`1BX`), `^\` (`1CX`), `^]` (`1DX`), `^^` (`1EX`) up to `^_` (`1FX`); the next character is Space (`20X`).
+In this way ctrl-key combinations run from `^@` (`0X`), `^A` (`1X`) .. `^Z` (`1AX`), `^[` (`1BX`), `^\` (`1CX`), `^]` (`1DX`), `^^` (`1EX`) up to `^_` (`1FX`); the next character is *space* (`20X`).
 
 ASCII codes that are sometimes used for the arrow keys are:
 *left*: `11X` (`^Q`),  *right*: `12X` (`^R`),   *up*: `13X` (`^S`),   *down*: `14X` (`^T`)
